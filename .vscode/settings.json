@@ -3,5 +3,8 @@
     "python.formatting.provider": "black",
     "editor.wordWrap": "on",
     "javascript.suggest.completeFunctionCalls": true,
-    "typescript.suggest.completeFunctionCalls": true
+    "typescript.suggest.completeFunctionCalls": true,
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true,
+    "python.pythonPath": "C:\\Users\\albert\\AppData\\Local\\Programs\\Python\\Python38\\python.exe"
 }
