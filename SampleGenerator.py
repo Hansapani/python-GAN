@@ -1,12 +1,15 @@
+from keras.models import Sequential
+from numpy import array
 from numpy import hstack
 from numpy import ones
 from numpy import zeros
 from numpy.random import rand 
 from numpy.random import randn
+from typing import Tuple
 
 
 # generate n real samples with class labels
-def generate_real_samples(n):
+def generate_real_samples(n: int) -> Tuple[array, array]:
     # generate inputs in [-0.5, 0.5]
     X1 = rand(n) - 0.5
     # generate outputs X^2
@@ -21,7 +24,7 @@ def generate_real_samples(n):
 
 
 # generate points in latent space as input for the generator
-def generate_latent_points(latent_dim, n):
+def generate_latent_points(latent_dim: int, n: int) -> array:
     # generate points in the latent space
     x_input = randn(latent_dim * n)
     # reshape into a batch of inputs for the network
@@ -30,7 +33,7 @@ def generate_latent_points(latent_dim, n):
 
 
 # use the generator to generate n fake examples, with class labels
-def generate_fake_samples(generator, latent_dim, n):
+def generate_fake_samples(generator: Sequential, latent_dim: int, n: int) -> Tuple[array, array]:
     # generate points in latent space
     x_input = generate_latent_points(latent_dim, n)
     # predict outputs

@@ -9,7 +9,7 @@ import SampleGenerator as sg
 
 
 # define the combined generator and discriminator model, for updating the generator
-def define_gan(generator, discriminator):
+def define_gan(generator: Sequential, discriminator: Sequential) -> Sequential:
     # make weights in the discriminator not trainable
     discriminator.trainable = False
     # connect them
@@ -24,7 +24,7 @@ def define_gan(generator, discriminator):
 
 
 # evaluate the discriminator and plot real and fake points
-def summarize_performance(epoch, generator, discriminator, latent_dim, n=100):
+def summarize_performance(epoch: int, generator: Sequential, discriminator: Sequential, latent_dim: int, n: int=100):
     # prepare real samples
     x_real, y_real = sg.generate_real_samples(n)
     # evaluate discriminator on real examples
@@ -49,7 +49,7 @@ def summarize_performance(epoch, generator, discriminator, latent_dim, n=100):
 
 
 # train the generator and discriminator
-def train(g_model, d_model, gan_model, latent_dim, n_epochs=10000, n_batch=128, n_eval=2000):
+def train(g_model: Sequential, d_model: Sequential, gan_model: Sequential, latent_dim: int, n_epochs: int=10000, n_batch: int=128, n_eval: int=2000):
     # determine half the size of one batch, for updating the discriminator
     half_batch = int(n_batch / 2)
     # manually enumerate epochs
